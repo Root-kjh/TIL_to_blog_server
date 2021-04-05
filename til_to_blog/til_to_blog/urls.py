@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from TIL.views import explorer, search
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('TIL/explorer/', explorer),
+    path('TIL/search/', search)
 ]

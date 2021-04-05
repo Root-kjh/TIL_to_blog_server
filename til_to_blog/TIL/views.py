@@ -13,6 +13,7 @@ def explorer(request):
 @csrf_exempt
 def search(request):
     request = json.loads(request.body)
+    ElasticSearch
     return JsonResponse({
         'keyword': request['keyword']
     })

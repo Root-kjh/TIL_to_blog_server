@@ -20,7 +20,11 @@ Response json: {file_type, file_context}
 
 {
     file_type: folder,
-    file_context: file_list
+    file_context: [
+        {"file_type": "file", "file_name": "a" "file_path": "/a.py"},
+        {"file_type": "file", "file_name": "b" "file_path": "/b.md"},
+        {"file_type": "folder", "file_name": "c" "file_path": "/c"}
+    ]
 }
 ```
 

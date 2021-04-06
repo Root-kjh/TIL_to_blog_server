@@ -1,4 +1,5 @@
 from elasticsearch import Elasticsearch
+import json
 
 class ElasticSearch:
     es = Elasticsearch(hosts="localhost", port=9200)

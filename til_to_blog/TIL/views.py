@@ -25,7 +25,7 @@ def explorer(request):
                 continue
             file_dict = dict()
             file_dict['file_name'] = file
-            file_dict['file_path'] = path+"/"+file
+            file_dict['file_path'] = request['path']+"/"+file
             if os.path.isdir(path+file):
                 file_dict['file_type'] = "folder"
             else:

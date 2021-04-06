@@ -3,12 +3,30 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from lib.ElasticSearch import ElasticSearch
 import json
+import os
+
+TIL_DIR = "/git/til"
 
 @csrf_exempt
 def explorer(request):
     request = json.loads(request.body)
+    path = os.path.realpath(TIL_DIR+request['path'])
+    if os.path.commonprefix((path,TIL_DIR)) != TIL_DIR:
+        return JsonResponse({
+            "message": "fail"
+        })
+    if os.path.isdir(path):
+        file_type = "dir"
+        file_context = [file.split(".")[0] for file in os.listdir(path)]
+    else:
+        file_type = "file"
+        file = open(path,'r')
+        file_context = file.read()
+        file.close()
+
     return JsonResponse({
-        'path': request['path']
+        "file_type": file_type,
+        "file_context": file_context
     })
 
 @csrf_exempt

@@ -7,6 +7,8 @@ import os
 
 TIL_DIR = "/git/til"
 
+FILE_IGNORE_LIST = [".git", "README.md"]
+
 @csrf_exempt
 def explorer(request):
     request = json.loads(request.body)
@@ -19,9 +21,11 @@ def explorer(request):
         file_type = "folder"
         file_context = list()
         for file in os.listdir(path):
+            if file in FILE_IGNORE_LIST:
+                continue
             file_dict = dict()
-                file_dict['file_name'] = file
-                file_dict['file_path'] = path+file
+            file_dict['file_name'] = file
+            file_dict['file_path'] = path+"/"+file
             if os.path.isdir(path+file):
                 file_dict['file_type'] = "folder"
             else:

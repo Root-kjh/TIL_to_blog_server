@@ -32,10 +32,10 @@ Response json: {file_list(file_name, file_path)}
 
 ```
 {
-    file_list:(
+    file_list:[
         {file_name: file_a, file_path: /test/file_a},
         {file_name: file_b, file_path: /test/file_b},
         {file_name: file_c, file_path: /test/file_c}
-    )
+    ]
 }
 ```

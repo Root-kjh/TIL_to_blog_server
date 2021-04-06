@@ -1,5 +1,4 @@
 from elasticsearch import Elasticsearch
-import json
 
 class ElasticSearch:
     es = Elasticsearch(hosts="localhost", port=9200)
@@ -10,11 +9,11 @@ class ElasticSearch:
         res = cls.es.search(
             index = "til", doc_type = "_doc",
             body = {
-                "query":{
-                    "pretty":"true",
-                    "q": keyword,
-                    "fields": "name,path"
-                }
+                "query":{"multi_match": {
+                    "query": keyword,
+                    "fields": ["name", "context"]
+                }},
+                "_source": ["name", "path"]
             }
         )
-        return (json.dumps(res, ensure_ascii=False, indent=4))
+        return res

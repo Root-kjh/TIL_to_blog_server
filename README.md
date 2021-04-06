@@ -8,7 +8,7 @@ TIL Repo를 React Blog로 변환
 
 ### explorer
 
-Request GET: /TIL/explorer/:path
+Request POST: /TIL/explorer/ -d {"path": path}
 
 Response json: {file_type, file_context}
 
@@ -26,7 +26,7 @@ Response json: {file_type, file_context}
 
 ### search
 
-Request GET: /TIL/search/:keyword
+Request POST: /TIL/search/:keyword -d {"keyword": keyword}
 
 Response json: {file_list(file_name, file_path)}
 

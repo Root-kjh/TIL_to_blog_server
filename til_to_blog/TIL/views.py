@@ -16,8 +16,17 @@ def explorer(request):
             "message": "fail"
         })
     if os.path.isdir(path):
-        file_type = "dir"
-        file_context = [file.split(".")[0] for file in os.listdir(path)]
+        file_type = "folder"
+        file_context = list()
+        for file in os.listdir(path):
+            file_dict = dict()
+                file_dict['file_name'] = file
+                file_dict['file_path'] = path+file
+            if os.path.isdir(path+file):
+                file_dict['file_type'] = "folder"
+            else:
+                file_dict['file_type'] = "file"
+            file_context.append(file_dict)
     else:
         file_type = "file"
         file = open(path,'r')

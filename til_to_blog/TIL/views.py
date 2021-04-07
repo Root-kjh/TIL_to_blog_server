@@ -24,7 +24,7 @@ def explorer(request):
             if file in FILE_IGNORE_LIST:
                 continue
             file_dict = dict()
-            file_dict['file_name'] = file
+            file_dict['file_name'] = file.split(".")[0].replace("_", " ")
             file_dict['file_path'] = request['path']+"/"+file
             if os.path.isdir(path+file):
                 file_dict['file_type'] = "folder"

@@ -30,7 +30,7 @@ Response json: {file_type, file_context}
 
 ### search
 
-Request POST: /TIL/search/:keyword -d {"keyword": keyword}
+Request POST: /TIL/search/ -d {"keyword": keyword}
 
 Response json: {file_list(file_name, file_path)}
 
